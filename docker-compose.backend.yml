@@ -7,6 +7,8 @@ services:
       - db_data:/var/lib/postgresql/data
     environment:
       POSTGRES_PASSWORD: postgrespassword
+    networks:
+      - backend
   graphql-engine:
     image: hasura/graphql-engine:v2.38.0
     ports:
@@ -14,9 +16,13 @@ services:
     restart: always
     env_file:
       - .env
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     depends_on:
-      data-connector-agent:
-        condition: service_healthy
+      - data-connector-agent
+      - node-app
+    networks:
+      - backend
   data-connector-agent:
     image: hasura/graphql-data-connector:v2.38.0
     restart: always
@@ -33,16 +39,19 @@ services:
       timeout: 10s
       retries: 5
       start_period: 5s
+    networks:
+      - backend
   node-app:
     env_file:
       - .env
+    networks:
+      - backend
     build:
       context: .
       dockerfile: Dockerfile.server
-    ports:
-      - "${MICROSERVICE_PORT:-8085}:8085"
-    environment:
-      - PORT=${MICROSERVICE_PORT:-8085}
-
+    
 volumes:
   db_data:
+
+networks:
+  backend:

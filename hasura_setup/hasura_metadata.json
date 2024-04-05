@@ -1,5 +1,5 @@
 {
-  "resource_version": 32,
+  "resource_version": 43,
   "metadata": {
     "version": 3,
     "sources": [
@@ -763,6 +763,46 @@
         }
       }
     ],
+    "actions": [
+      {
+        "name": "node_app_health_check",
+        "definition": {
+          "handler": "{{NODE_APP_URL}}/health",
+          "output_type": "NodeAppHealthCheckOutput",
+          "request_transform": {
+            "body": {
+              "action": "transform",
+              "template": "{}"
+            },
+            "method": "GET",
+            "query_params": {},
+            "request_headers": {
+              "add_headers": {},
+              "remove_headers": [
+                "content-type"
+              ]
+            },
+            "template_engine": "Kriti",
+            "version": 2
+          },
+          "type": "query"
+        },
+        "comment": "node_app_health_check"
+      }
+    ],
+    "custom_types": {
+      "objects": [
+        {
+          "name": "NodeAppHealthCheckOutput",
+          "fields": [
+            {
+              "name": "status",
+              "type": "String!"
+            }
+          ]
+        }
+      ]
+    },
     "backend_configs": {
       "dataconnector": {
         "athena": {

@@ -37,7 +37,7 @@ app.use(cors());
 app.disable('x-powered-by');
 
 app.get('/health', (_req, res) => {
-  res.send('UP');
+  res.send({ status: 'UP' });
 });
 
 const apiRouter = express.Router();
