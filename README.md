@@ -1,6 +1,8 @@
 # Project Title
 
-A brief description of your project goes here. Mention what it does and why it's useful.
+This project is written to demonstrate the main functionalities of Hasura including Actions, Permissions, GraphQL API.
+
+This project has been created from my own [React TS template](https://github.com/CharlieJ213/react-ts-skeleton)
 
 ## Table of Contents
 
