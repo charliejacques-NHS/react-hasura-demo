@@ -105,8 +105,16 @@ This project is written to demonstrate the main functionalities of Hasura includ
 
 ### Hasura
 
-#### Initial Metadata
+#### Initial Setup
 
-I have set up a folder for [Hasura Metadata](./hasura_metadata). This contains an initial metadata export to get you started.
+I have set up a folder for [Hasura setup help](./hasura_setup). This contains an initial metadata export and db dump to get you started.
 
-Once you have Hasura up and running locally navigate to the [console](http://localhost:8080/console/settings/metadata-actions) and click `Import Metadata`. Once you import the metadata file navigate to the [data tab](http://localhost:8080/console/data/data/schema/public) to see the structure of the tables that have been set up.
+I've included the command to start running Hasura and the db in Docker in the [usage](#usage) section. Run this to get all the backend bits online.
+
+This will be created with an initially empty database. So I've included a database dump with all the relevant tables and base data set up for you to get started. You will need to run the following command to seed the database (changing `<your-db-container>` for the name of your container, this can be found by running `docker container list`):
+
+```bash
+cat /hasura-setup/hasura_dump | docker exec -i <your-db-container> psql -U postgres
+```
+
+Once you have seeded the database and have Hasura up and running locally navigate to the [console](http://localhost:8080/console/settings/metadata-actions) and click `Import Metadata`. Once you import the [metadata file](./hasura_setup/hasura_metadata.json) navigate to the [data tab](http://localhost:8080/console/data/data/schema/public) to see the structure of the tables that have been set up.
