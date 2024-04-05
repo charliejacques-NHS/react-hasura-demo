@@ -33,5 +33,16 @@ services:
       timeout: 10s
       retries: 5
       start_period: 5s
+  node-app:
+    env_file:
+      - .env
+    build:
+      context: .
+      dockerfile: Dockerfile.server
+    ports:
+      - "${MICROSERVICE_PORT:-8085}:8085"
+    environment:
+      - PORT=${MICROSERVICE_PORT:-8085}
+
 volumes:
   db_data:
