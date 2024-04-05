@@ -1,0 +1,23 @@
+@import '../../theme';
+
+:root {
+  --modal-overlay-background-color: var(--black-overlay);
+}
+
+.wrapper {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--modal-overlay-background-color);
+}
+
+.hide {
+  @include hidden;
+}
+
+#modal-root {
+  z-index: var(--z-modal);
+}

@@ -1,0 +1,16 @@
+{
+  "recommendations": [
+    "christian-kohler.path-intellisense",
+    "formulahendry.auto-rename-tag",
+    "aaron-bond.better-comments",
+    "streetsidesoftware.code-spell-checker",
+    "clinyong.vscode-css-modules",
+    "dsznajder.es7-react-js-snippets",
+    "dbaeumer.vscode-eslint",
+    "eamodio.gitlens",
+    "pkief.material-icon-theme",
+    "christian-kohler.npm-intellisense",
+    "sibiraj-s.vscode-scss-formatter",
+    "mrmlnc.vscode-scss"
+  ]
+}

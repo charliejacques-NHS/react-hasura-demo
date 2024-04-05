@@ -1,0 +1,42 @@
+@import './theme';
+
+:root {
+  font-family: var(--font-family-main);
+  line-height: var(--line-height-md);
+  font-weight: var(--font-weight-normal);
+
+  color-scheme: light dark;
+  color: var(--color);
+  background-color: var(--background-color);
+}
+
+a {
+  font-weight: var(--font-weight-bold);
+  color: var(--text-link-color);
+  text-decoration: inherit;
+}
+a:hover {
+  color: var(--text-link-color--hover);
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: var(--mobile-sm);
+  min-height: 100vh;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --color: var(--color-light-mode);
+    --background-color: var(--background-color-light-mode);
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    --button-background-color: var(--white-smoke);
+    --button-background-color--hover: var(--pure-white);
+  }
+}
