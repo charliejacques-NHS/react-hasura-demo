@@ -10,6 +10,7 @@ This project has been created from my own [React TS template](https://github.com
   - [Table of Contents](#table-of-contents)
   - [Installation](#installation)
   - [Usage](#usage)
+  - [Plan](#plan)
   - [Features](#features)
     - [Hasura](#hasura)
       - [Inital Metadata](#inital-metadata)
@@ -61,6 +62,42 @@ docker-compose -f docker-compose.hasura.yml up -d
 ```
 
 This command spins up an instance of Hasura locally
+
+## Plan
+
+For this project I want to demonstrate certain features of Hasura. To do that I will create a miniature shopping application which displays some products and allows you to add those to a basket and checkout.
+
+The following stuff will be used:
+
+- GraphQL API
+  - All data will be fetched from Hasura's GraphQL API (using headers to configure Hasura Session Variables)
+- GraphQL Subscriptions
+  - The shopping basket will be cached in Hasura using Web sockets to keep the data synced
+- Hasura Actions
+  - I'll set up a small Node JS microservice which exposes some endpoints
+  - This API will only be accessible with an API key (which will be set as an environment variable) so it can't be called directly from the frontend
+  - An action will be set up, so the frontend can call the API via GraphQL
+- Role Based Access Control
+  - This will be governed through table-level permissions in Hasura
+  - I'll also set up "feature_flags" to demonstrate changing frontend functionality based on a user's role
+- Hasura Session Variables
+  - These can be controlled multiple ways
+  - We are controlling them through the request headers being sent
+
+Stuff that's not used but is interesting to know
+
+- Hasura events
+  - Set up One-off, scheduled & triggered events through the `Events` tab in the Hasura console
+- JWT Authentication
+  - Hasura can be set up quite quickly to require JWT authentication. It provides some environment variables that you just need to assign values to e.g. `HASURA_GRAPHQL_JWT_SECRET`
+  - We can control the session variables (`x-hasura-role`, `x-hasura-user-id`, `x-hasura-anything-you-like`) through claims in the JWT body. Read about it [here](https://hasura.io/docs/latest/auth/authentication/jwt/)
+- Remote Schemas
+  - Hasura can be set up to read remote GraphQL schemas, so you can integrate them with your own API and the frontend only ever needs to talk to Hasura
+- RESTified Endpoints
+  - You can turn GraphQL queries into REST endpoints if you need to use REST over GraphQL at any point.
+- CI/CD
+  - There is a CLI for Hasura that can be used to apply / create database migrations, import / export metadata (so you can store changes to any tables or metadata in version control)
+  - Read more [here](https://hasura.io/docs/latest/hasura-cli/overview/)
 
 ## Features
 
