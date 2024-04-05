@@ -58,10 +58,10 @@ yarn build
 This command builds the production-ready version of your project.
 
 ```bash
-docker-compose -f docker-compose.hasura.yml up -d
+docker-compose -f docker-compose.backend.yml up -d
 ```
 
-This command spins up an instance of Hasura locally
+This command spins up an instance of Hasura, Postgres and the NodeJS API locally
 
 ## Plan
 
