@@ -13,7 +13,7 @@ This project has been created from my own [React TS template](https://github.com
   - [Plan](#plan)
   - [Features](#features)
     - [Hasura](#hasura)
-      - [Initial Metadata](#initial-metadata)
+      - [Initial Setup](#initial-setup)
 
 ## Installation
 
