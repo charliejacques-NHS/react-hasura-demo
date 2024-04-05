@@ -13,7 +13,7 @@ This project has been created from my own [React TS template](https://github.com
   - [Plan](#plan)
   - [Features](#features)
     - [Hasura](#hasura)
-      - [Inital Metadata](#inital-metadata)
+      - [Initial Metadata](#initial-metadata)
 
 ## Installation
 
@@ -105,7 +105,7 @@ This project is written to demonstrate the main functionalities of Hasura includ
 
 ### Hasura
 
-#### Inital Metadata
+#### Initial Metadata
 
 I have set up a folder for [Hasura Metadata](./hasura_metadata). This contains an initial metadata export to get you started.
 
