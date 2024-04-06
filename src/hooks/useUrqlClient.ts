@@ -6,7 +6,11 @@ import {
   subscriptionExchange,
 } from 'urql';
 import { useAuthContext } from '@app/context';
-import { GRAPHQL_URL, GRAPHQL_WS_URL } from '@app/util/config';
+import {
+  GRAPHQL_API_SECRET,
+  GRAPHQL_URL,
+  GRAPHQL_WS_URL,
+} from '@app/util/config';
 import { createClient as createWSClient } from 'graphql-ws';
 
 const wsClient = createWSClient({
@@ -19,7 +23,10 @@ const wsClient = createWSClient({
 export const useUrqlClient = () => {
   const { role, userId } = useAuthContext();
   const headers = useMemo<{ [key: string]: string }>(
-    () => ({ 'x-hasura-role': role ?? 'unauthorized' }),
+    () => ({
+      'x-hasura-role': role ?? 'unauthorized',
+      'x-hasura-admin-secret': GRAPHQL_API_SECRET,
+    }),
     [role, userId],
   );
 

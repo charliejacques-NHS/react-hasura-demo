@@ -1,0 +1,21 @@
+:root {
+  --pill--background-color: var(--neon-blue);
+  --pill--color: var(--white-smoke);
+  --pill--margin-horizontal: var(--gutter-sm);
+  --pill--margin-vertical: var(--gutter-sm);
+  --pill--padding-horizontal: var(--gutter-sm);
+  --pill--padding-vertical: var(--gutter-xs);
+  --pill--border-radius: var(--border-radius-sm);
+}
+
+.wrapper {
+  background-color: var(--pill--background-color);
+  color: var(--pill--color);
+  margin: var(--pill--margin-vertical) var(--pill--margin-horizontal);
+  padding: var(--pill--padding-vertical) var(--pill--padding-horizontal);
+  border-radius: var(--pill--border-radius);
+}
+
+.clickable {
+  cursor: pointer;
+}

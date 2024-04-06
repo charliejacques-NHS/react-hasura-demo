@@ -1,4 +1,4 @@
-import { useTranslation } from 'react-i18next';
+// import { useTranslation } from 'react-i18next';
 import s from './Header.module.scss';
 
 /**
@@ -6,13 +6,9 @@ import s from './Header.module.scss';
  * @returns {JSX.Element}
  */
 const Header = (): JSX.Element => {
-  const { t } = useTranslation();
+  // const { t } = useTranslation();
 
-  return (
-    <header className={s.wrapper}>
-      <p>{t('header')}</p>
-    </header>
-  );
+  return <header className={s.wrapper}>{/* <p>{t('header')}</p> */}</header>;
 };
 
 export default Header;

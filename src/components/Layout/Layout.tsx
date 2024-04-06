@@ -1,8 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import s from './Layout.module.scss';
-import { Header, Footer } from '@app/components';
-import { useTranslation } from 'react-i18next';
+import { Header } from '@app/components';
 
 /**
  * Props Type Interface for {@link Layout}
@@ -20,16 +19,16 @@ export interface LayoutProps {
  * @returns {JSX.Element}
  */
 const Layout = ({ pageTitle }: LayoutProps): JSX.Element => {
-  const { t } = useTranslation();
-
   return (
     <div className={s.wrapper}>
-      <Helmet>{pageTitle && <title>{t(pageTitle)}</title>}</Helmet>
+      <Helmet>
+        <title>{pageTitle}</title>
+      </Helmet>
       <Header />
       <main id="main">
         <Outlet />
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useSiteSettingsContext } from '@app/context';
 import { BASE_SITE_TITLE } from '@app/util/config';
+import { useTranslation } from 'react-i18next';
 
 /**
  * Custom hook to set the title of the site
@@ -9,9 +10,10 @@ import { BASE_SITE_TITLE } from '@app/util/config';
  */
 export const useSiteTitle = (title: string, overrideBase = false): void => {
   const { setSiteTitle } = useSiteSettingsContext();
+  const { t } = useTranslation();
 
   useEffect(() => {
-    setSiteTitle(overrideBase ? title : `${BASE_SITE_TITLE} - ${title}`);
+    setSiteTitle(overrideBase ? title : `${BASE_SITE_TITLE} - ${t(title)}`);
 
     return () => {
       setSiteTitle(BASE_SITE_TITLE);

@@ -4,11 +4,12 @@ import App from './App/App';
 import Button, { ButtonProps } from './Button/Button';
 import Footer from './Footer/Footer';
 import Header from './Header/Header';
+import Pill, { PillProps } from './Pill/Pill';
 import Layout, { LayoutProps } from './Layout/Layout';
 import Modal, { ModalProps } from './Modal/Modal';
 import PrivateRouteWrapper from './PrivateRouteWrapper/PrivateRouteWrapper';
 
-export type { ButtonProps, LayoutProps, ModalProps, TextInputProps };
+export type { ButtonProps, LayoutProps, ModalProps, PillProps, TextInputProps };
 
 export {
   App,
@@ -18,6 +19,7 @@ export {
   Header,
   Layout,
   Modal,
+  Pill,
   TextInput,
   PrivateRouteWrapper,
 };

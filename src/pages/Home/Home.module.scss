@@ -1,7 +1,35 @@
+@import "../../theme/";
+
 .wrapper {
   background-color: var(--pure-white);
+  width: 100%;
 
-  p {
-    color: var(--black);
+  .filters {
+    @include flex-with-align(flex-start, center, row);
   }
+
+  .productsWrapper {
+    width: 100%;
+    .product {
+      width: 80%;
+      padding: 0 10%;
+      .info {
+        margin: var(--gutter-sm) 0;
+        @include flex-with-align(space-between, center, row);
+        .image {
+          width: 64px;
+          height: 64px;
+          object-fit: contain;
+        }
+      }
+
+      .categoriesWrapper {
+        width: 50%;
+      }
+    }
+  }
+}
+
+.row {
+  @include row();
 }

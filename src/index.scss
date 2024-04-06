@@ -1,13 +1,13 @@
-@import './theme';
+@import "./theme";
 
 :root {
   font-family: var(--font-family-main);
   line-height: var(--line-height-md);
   font-weight: var(--font-weight-normal);
 
-  color-scheme: light dark;
-  color: var(--color);
-  background-color: var(--background-color);
+  // color-scheme: light dark;
+  // color: var(--color);
+  // background-color: var(--background-color);
 }
 
 a {
@@ -21,8 +21,7 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
+  display: block;
   min-width: var(--mobile-sm);
   min-height: 100vh;
 }
