@@ -83,6 +83,8 @@ The following stuff will be used:
 - Hasura Session Variables
   - These can be controlled multiple ways
   - We are controlling them through the request headers being sent
+- RESTified Endpoints
+  - You can turn GraphQL queries into REST endpoints if you need to use REST over GraphQL at any point.
 
 Stuff that's not used but is interesting to know
 
@@ -93,8 +95,6 @@ Stuff that's not used but is interesting to know
   - We can control the session variables (`x-hasura-role`, `x-hasura-user-id`, `x-hasura-anything-you-like`) through claims in the JWT body. Read about it [here](https://hasura.io/docs/latest/auth/authentication/jwt/)
 - Remote Schemas
   - Hasura can be set up to read remote GraphQL schemas, so you can integrate them with your own API and the frontend only ever needs to talk to Hasura
-- RESTified Endpoints
-  - You can turn GraphQL queries into REST endpoints if you need to use REST over GraphQL at any point.
 - CI/CD
   - There is a CLI for Hasura that can be used to apply / create database migrations, import / export metadata (so you can store changes to any tables or metadata in version control)
   - Read more [here](https://hasura.io/docs/latest/hasura-cli/overview/)
