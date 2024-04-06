@@ -1,3 +1,4 @@
 import * as ACTIONS from './actions';
+import * as QUERIES from './queries';
 
-export { ACTIONS };
+export { ACTIONS, QUERIES };
