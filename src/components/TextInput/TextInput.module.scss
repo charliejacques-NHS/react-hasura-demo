@@ -33,8 +33,10 @@
   font-weight: var(--text-input--font-weight);
   line-height: var(--text-input--line-height);
 
-  margin: var(--text-input--margin-vertical) var(--text-input--margin-horizontal);
-  padding: var(--text-input--padding-vertical) var(--text-input--padding-horizontal);
+  margin: var(--text-input--margin-vertical)
+    var(--text-input--margin-horizontal);
+  padding: var(--text-input--padding-vertical)
+    var(--text-input--padding-horizontal);
 
   &::placeholder {
     color: var(--text-input--color-placeholder);
