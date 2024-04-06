@@ -1,5 +1,5 @@
 {
-  "resource_version": 43,
+  "resource_version": 51,
   "metadata": {
     "version": 3,
     "sources": [
@@ -763,7 +763,68 @@
         }
       }
     ],
+    "query_collections": [
+      {
+        "name": "allowed-queries",
+        "definition": {
+          "queries": [
+            {
+              "name": "GET_USER_DETAILS",
+              "query": "query GET_USER_DETAILS($username: String!) {\n  users(where: {username:{_eq: $username}}) {\n    id\n    groups {\n      user_group {\n        id\n        name\n      }\n    }\n  }\n}"
+            }
+          ]
+        }
+      }
+    ],
+    "allowlist": [
+      {
+        "collection": "allowed-queries",
+        "scope": {
+          "global": true
+        }
+      }
+    ],
     "actions": [
+      {
+        "name": "get_user_details",
+        "definition": {
+          "handler": "{{NODE_APP_URL}}/api/user/details",
+          "output_type": "GetUserDetailsOutput",
+          "headers": [
+            {
+              "name": "Authorization",
+              "value": "Bearer {{MICROSERVICE_API_KEY}}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "arguments": [
+            {
+              "name": "args",
+              "type": "GetUserDetailsInput!"
+            }
+          ],
+          "request_transform": {
+            "body": {
+              "action": "transform",
+              "template": "{\n  \"username\": {{$body.input.args.username}}\n}"
+            },
+            "method": "POST",
+            "query_params": {},
+            "template_engine": "Kriti",
+            "version": 2
+          },
+          "type": "query"
+        },
+        "comment": "get_user_details",
+        "permissions": [
+          {
+            "role": "unauthorized"
+          }
+        ]
+      },
       {
         "name": "node_app_health_check",
         "definition": {
@@ -791,6 +852,17 @@
       }
     ],
     "custom_types": {
+      "input_objects": [
+        {
+          "name": "GetUserDetailsInput",
+          "fields": [
+            {
+              "name": "username",
+              "type": "String!"
+            }
+          ]
+        }
+      ],
       "objects": [
         {
           "name": "NodeAppHealthCheckOutput",
@@ -800,9 +872,42 @@
               "type": "String!"
             }
           ]
+        },
+        {
+          "name": "GetUserDetailsOutput",
+          "fields": [
+            {
+              "name": "user_id",
+              "type": "String!"
+            },
+            {
+              "name": "group_name",
+              "type": "String!"
+            },
+            {
+              "name": "group_id",
+              "type": "String!"
+            }
+          ]
         }
       ]
     },
+    "rest_endpoints": [
+      {
+        "comment": "Fetches user details",
+        "definition": {
+          "query": {
+            "collection_name": "allowed-queries",
+            "query_name": "GET_USER_DETAILS"
+          }
+        },
+        "methods": [
+          "GET"
+        ],
+        "name": "GET_USER_DETAILS",
+        "url": "get-user-details/:username"
+      }
+    ],
     "backend_configs": {
       "dataconnector": {
         "athena": {

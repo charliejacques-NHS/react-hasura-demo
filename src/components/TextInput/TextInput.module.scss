@@ -1,0 +1,42 @@
+:root {
+  // Spacing
+  --text-input--padding-horizontal: var(--gutter-md);
+  --text-input--padding-vertical: var(--gutter-sm);
+  --text-input--margin-horizontal: var(--gutter-sm);
+  --text-input--margin-vertical: var(--gutter-md);
+
+  // Colours
+  --text-input--color: var(--nero-dark);
+  --text-input--color-placeholder: var(--nero-dark);
+  --text-input--background-color: transparent;
+
+  // Typography
+  --text-input--font-size: var(--font-size-md);
+  --text-input--font-weight: var(--font-weight-normal);
+  --text-input--line-height: var(--line-height-md);
+
+  // Border
+  --text-input--border-color: var(--nero-dark);
+  --text-input--border-width: var(--border-width-sm);
+  --text-input--border-radius: var(--border-radius-sm);
+}
+
+.wrapper {
+  color: var(--text-input--color);
+  background-color: var(--text-input--background-color);
+
+  border-color: var(--text-input--border-color);
+  border-width: var(--text-input--border-width);
+  border-radius: var(--text-input--border-radius);
+
+  font-size: var(--text-input--font-size);
+  font-weight: var(--text-input--font-weight);
+  line-height: var(--text-input--line-height);
+
+  margin: var(--text-input--margin-vertical) var(--text-input--margin-horizontal);
+  padding: var(--text-input--padding-vertical) var(--text-input--padding-horizontal);
+
+  &::placeholder {
+    color: var(--text-input--color-placeholder);
+  }
+}

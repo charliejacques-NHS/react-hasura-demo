@@ -1,20 +1,15 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import enTranslation from '@app/assets/translations/en.json'; // Path to your English translations
-import frTranslation from '@app/assets/translations/fr.json'; // Path to your French translations
 
 enum LANGUAGES {
   EN = 'en',
-  FR = 'fr',
 }
 
 // Define translations
 const resources = {
   [LANGUAGES.EN]: {
     translation: enTranslation,
-  },
-  [LANGUAGES.FR]: {
-    translation: frTranslation,
   },
 };
 

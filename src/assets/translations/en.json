@@ -1,5 +1,9 @@
 {
-  "hello": "Hello",
-  "hi": "Hi",
-  "alright": "Alright"
+  "footer": "this is the footer!",
+  "header": "this is where your header goes!",
+  "pageNotFound": "Page Not Found",
+  "home": "Home",
+  "usernamePlaceholder": "Choose the username you want to use",
+  "continue": "Continue",
+  "usernameFormError": "Please enter a username"
 }

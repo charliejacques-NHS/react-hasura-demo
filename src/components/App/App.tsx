@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
-import { Layout } from '@app/components';
-import { Home, NotFound } from '@app/pages';
+import { Layout, PrivateRouteWrapper } from '@app/components';
+import { Home, NotFound, SignIn } from '@app/pages';
 import { ROUTES } from '@app/types';
 import { useSiteSettingsContext } from '@app/context';
 
@@ -12,10 +12,16 @@ const App = (): JSX.Element => {
   const { siteTitle } = useSiteSettingsContext();
   return (
     <Routes>
-      <Route path={ROUTES.HOME} element={<Layout pageTitle={siteTitle} />}>
-        <Route index element={<Home />} />
+      <Route element={<Layout pageTitle={siteTitle} />}>
+        {/* PRIVATE ROUTES */}
+        <Route element={<PrivateRouteWrapper />}>
+          <Route path={ROUTES.HOME} element={<Home />} />
+        </Route>
+
+        {/* PUBLIC ROUTES */}
+        <Route path={ROUTES.SIGN_IN} element={<SignIn />} />
+        <Route path={ROUTES.ANY} element={<NotFound />} />
       </Route>
-      <Route path={ROUTES.ANY} element={<NotFound />} />
     </Routes>
   );
 };
