@@ -1,3 +1,7 @@
+@import '../../theme/';
+
 .wrapper {
   z-index: var(--z-page-header);
+  @include flex-with-align(space-evenly, center, row);
+  padding: var(--gutter-sm) 0;
 }

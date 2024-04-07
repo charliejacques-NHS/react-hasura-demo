@@ -7,7 +7,7 @@ import { useAuthContext } from '.';
 export interface FeatureFlagsContextValue {
   /**
    * Function to check if a feature flag is enabled
-   * @param username The new username
+   * @param flag The feature flag you want to check
    */
   checkFeatureEnabled(flag: FEATURE_FLAGS): boolean;
 }

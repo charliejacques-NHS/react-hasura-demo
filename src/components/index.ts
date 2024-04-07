@@ -7,6 +7,7 @@ import Pill, { PillProps } from './Pill/Pill';
 import Layout, { LayoutProps } from './Layout/Layout';
 import Modal, { ModalProps } from './Modal/Modal';
 import PrivateRouteWrapper from './PrivateRouteWrapper/PrivateRouteWrapper';
+import ProductQuantityPicker from './ProductQuantityPicker/ProductQuantityPicker';
 
 export type { ButtonProps, LayoutProps, ModalProps, PillProps, TextInputProps };
 
@@ -20,4 +21,5 @@ export {
   Pill,
   TextInput,
   PrivateRouteWrapper,
+  ProductQuantityPicker,
 };

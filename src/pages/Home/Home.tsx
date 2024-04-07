@@ -1,9 +1,15 @@
 import { useProducts, useSiteTitle } from '@app/hooks';
 import s from './Home.module.scss';
 import { useState } from 'react';
-import { BUTTON_TYPE, Button, Pill, TextInput } from '@app/components';
+import {
+  BUTTON_TYPE,
+  Button,
+  Pill,
+  ProductQuantityPicker,
+  TextInput,
+} from '@app/components';
 import { NewProductForm } from '@app/forms';
-import { useFeatureFlagsContext } from '@app/context';
+import { useBasketContext, useFeatureFlagsContext } from '@app/context';
 import { FEATURE_FLAGS } from '@app/types';
 
 /**
@@ -20,6 +26,7 @@ const Home = (): JSX.Element => {
   });
   const [displayProductForm, setDisplayProductForm] = useState<boolean>(false);
 
+  const { addItemToBasket, itemInBasket } = useBasketContext();
   const { checkFeatureEnabled } = useFeatureFlagsContext();
 
   const productCategories = products.map(({ categories }) => categories).flat();
@@ -95,6 +102,13 @@ const Home = (): JSX.Element => {
                 </div>
                 <p className={s.description}>{description}</p>
                 <p className={s.price}>£{price.toFixed(2)}</p>
+                {!itemInBasket(id) ? (
+                  <Button onClick={() => addItemToBasket(id)}>
+                    Add to basket
+                  </Button>
+                ) : (
+                  <ProductQuantityPicker id={id} />
+                )}
               </div>
               <div className={s.categoriesWrapper}>
                 <span>Categories: </span>

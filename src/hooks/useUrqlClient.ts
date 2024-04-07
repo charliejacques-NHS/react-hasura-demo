@@ -13,10 +13,6 @@ import {
 } from '@app/util/config';
 import { createClient as createWSClient } from 'graphql-ws';
 
-const wsClient = createWSClient({
-  url: GRAPHQL_WS_URL,
-});
-
 /**
  * Custom hook to create a new URQL client. Written as a hook so it can access the AuthContext
  */
@@ -31,6 +27,11 @@ export const useUrqlClient = () => {
   );
 
   if (userId) headers['x-hasura-user-id'] = userId;
+
+  const wsClient = createWSClient({
+    url: GRAPHQL_WS_URL,
+    connectionParams: async () => ({ headers }),
+  });
 
   return new Client({
     url: GRAPHQL_URL,

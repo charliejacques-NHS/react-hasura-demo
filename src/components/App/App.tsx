@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import { Layout, PrivateRouteWrapper } from '@app/components';
-import { Home, NotFound, SignIn } from '@app/pages';
+import { Basket, Home, NotFound, SignIn } from '@app/pages';
 import { ROUTES } from '@app/types';
 import { useSiteSettingsContext } from '@app/context';
 
@@ -16,6 +16,7 @@ const App = (): JSX.Element => {
         {/* PRIVATE ROUTES */}
         <Route element={<PrivateRouteWrapper />}>
           <Route path={ROUTES.HOME} element={<Home />} />
+          <Route path={ROUTES.BASKET} element={<Basket />} />
         </Route>
 
         {/* PUBLIC ROUTES */}
