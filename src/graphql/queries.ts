@@ -67,7 +67,7 @@ export const GET_PRODUCTS = gql<GET_PRODUCTS, GET_PRODUCTS_VARIABLES>`
 `;
 
 interface GET_FEATURE_FLAGS {
-  feature_flags: Pick<DB.FeatureFlag, 'id' | 'name' | 'enabled'>;
+  feature_flags: Pick<DB.FeatureFlag, 'id' | 'name' | 'enabled'>[];
 }
 
 export const GET_FEATURE_FLAGS = gql<GET_FEATURE_FLAGS>`
@@ -76,6 +76,20 @@ export const GET_FEATURE_FLAGS = gql<GET_FEATURE_FLAGS>`
       id
       name
       enabled
+    }
+  }
+`;
+
+interface GET_CATEGORIES {
+  categories: Pick<DB.Category, 'id' | 'name' | 'friendly_name'>[];
+}
+
+export const GET_CATEGORIES = gql<GET_CATEGORIES>`
+  query GET_CATEGORIES {
+    categories {
+      id
+      name
+      friendly_name
     }
   }
 `;

@@ -9,9 +9,26 @@ import {
   AuthContext,
   AuthProvider,
 } from './AuthContext';
+import {
+  type FeatureFlagsContextValue,
+  FeatureFlagsContext,
+  FeatureFlagsProvider,
+} from './FeatureFlagsContext';
 
 export const useSiteSettingsContext = () => useContext(SiteSettingsContext);
 export const useAuthContext = () => useContext(AuthContext);
+export const useFeatureFlagsContext = () => useContext(FeatureFlagsContext);
 
-export type { SiteSettingsContextValue, AuthContextValue };
-export { SiteSettingsContext, SiteSettingsProvider, AuthContext, AuthProvider };
+export type {
+  SiteSettingsContextValue,
+  AuthContextValue,
+  FeatureFlagsContextValue,
+};
+export {
+  SiteSettingsContext,
+  SiteSettingsProvider,
+  AuthContext,
+  AuthProvider,
+  FeatureFlagsContext,
+  FeatureFlagsProvider,
+};

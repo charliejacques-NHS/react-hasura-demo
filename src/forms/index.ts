@@ -1,3 +1,4 @@
 import SignInForm from './SignIn/SignIn';
+import NewProductForm from './NewProduct/NewProduct';
 
-export { SignInForm };
+export { SignInForm, NewProductForm };

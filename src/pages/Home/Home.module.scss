@@ -1,4 +1,4 @@
-@import '../../theme/';
+@import "../../theme/";
 
 .wrapper {
   background-color: var(--pure-white);
@@ -6,6 +6,9 @@
 
   .filters {
     @include flex-with-align(flex-start, center, row);
+    .active {
+      --pill--background-color: var(--blue-whale);
+    }
   }
 
   .productsWrapper {

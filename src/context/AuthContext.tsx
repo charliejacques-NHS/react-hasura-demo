@@ -28,6 +28,10 @@ export interface AuthContextValue {
    * @param userId The new id
    */
   setUserId(userId: string): void;
+  /**
+   * Whether the current user is authenticated or not
+   */
+  authenticated: boolean;
 }
 
 const initialValue: AuthContextValue = {
@@ -43,6 +47,7 @@ const initialValue: AuthContextValue = {
   setUserId: function (_userId: string): void {
     throw new Error('Function not implemented.');
   },
+  authenticated: false,
 };
 
 export const AuthContext = createContext(initialValue);
@@ -56,7 +61,15 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
   const [userId, setUserId] = useState<string | undefined>(initialValue.userId);
   return (
     <AuthContext.Provider
-      value={{ username, setUsername, role, setRole, userId, setUserId }}>
+      value={{
+        username,
+        setUsername,
+        role,
+        setRole,
+        userId,
+        setUserId,
+        authenticated: !!role && !!userId,
+      }}>
       {children}
     </AuthContext.Provider>
   );

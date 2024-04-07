@@ -7,6 +7,7 @@ import s from './TextInput.module.scss';
 export interface TextInputProps
   extends Omit<HTMLProps<HTMLInputElement>, 'type' | 'onChange'> {
   onChange: (text: string) => void;
+  label?: string;
 }
 
 /**
@@ -17,15 +18,19 @@ export interface TextInputProps
 const TextInput = ({
   className,
   onChange,
+  label,
   ...props
 }: TextInputProps): JSX.Element => {
   return (
-    <input
-      className={[s.wrapper, className].join(' ')}
-      type="text"
-      onChange={e => onChange(e.target.value)}
-      {...props}
-    />
+    <div className={s.wrapper}>
+      {label && <label className={s.label}>{label}</label>}
+      <input
+        className={[s.input, className].join(' ')}
+        type="text"
+        onChange={e => onChange(e.target.value)}
+        {...props}
+      />
+    </div>
   );
 };
 

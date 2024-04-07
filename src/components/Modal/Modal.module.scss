@@ -1,11 +1,11 @@
-@import '../../theme';
+@import "../../theme";
 
 :root {
   --modal-overlay-background-color: var(--black-overlay);
 }
 
 .wrapper {
-  display: flex;
+  @include flex-with-align(center, center);
   position: fixed;
   top: 0;
   left: 0;
@@ -14,7 +14,7 @@
   background-color: var(--modal-overlay-background-color);
 }
 
-.hide {
+.hidden {
   @include hidden;
 }
 

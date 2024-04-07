@@ -15,7 +15,7 @@ export interface ModalProps extends PropsWithChildren {
  * @returns {JSX.Element}
  */
 const Modal = ({ show, children }: ModalProps): JSX.Element => {
-  const container = document.getElementById('modal-root');
+  const container = document.getElementById('modal-portal');
 
   if (!container) throw new Error('No Modal Root Container found!');
 

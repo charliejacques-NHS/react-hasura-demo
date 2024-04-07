@@ -28,7 +28,6 @@ const Layout = ({ pageTitle }: LayoutProps): JSX.Element => {
       <main id="main">
         <Outlet />
       </main>
-      {/* <Footer /> */}
     </div>
   );
 };

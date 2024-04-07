@@ -1,7 +1,10 @@
 import { useProducts, useSiteTitle } from '@app/hooks';
 import s from './Home.module.scss';
 import { useState } from 'react';
-import { Pill, TextInput } from '@app/components';
+import { BUTTON_TYPE, Button, Pill, TextInput } from '@app/components';
+import { NewProductForm } from '@app/forms';
+import { useFeatureFlagsContext } from '@app/context';
+import { FEATURE_FLAGS } from '@app/types';
 
 /**
  * The home page of the application
@@ -15,6 +18,9 @@ const Home = (): JSX.Element => {
     categories: filteredCategories,
     text: filterText,
   });
+  const [displayProductForm, setDisplayProductForm] = useState<boolean>(false);
+
+  const { checkFeatureEnabled } = useFeatureFlagsContext();
 
   const productCategories = products.map(({ categories }) => categories).flat();
   const distinctProductIds = Array.from(
@@ -30,6 +36,11 @@ const Home = (): JSX.Element => {
     } else {
       setFilteredCategories(prev => [...prev, newCategory]);
     }
+    refetchProducts();
+  };
+
+  const closeNewProductForm = () => {
+    setDisplayProductForm(false);
     refetchProducts();
   };
 
@@ -51,6 +62,13 @@ const Home = (): JSX.Element => {
               el =>
                 el && (
                   <Pill
+                    className={
+                      s[
+                        filteredCategories.includes(el.category.id)
+                          ? 'active'
+                          : ''
+                      ]
+                    }
                     text={el.category.friendly_name}
                     key={el.category.id}
                     onClick={() => updateCategoryFilter(el.category.id)}
@@ -58,6 +76,13 @@ const Home = (): JSX.Element => {
                 ),
             )}
         </div>
+        {checkFeatureEnabled(FEATURE_FLAGS.LIST_NEW_PRODUCTS) && (
+          <Button
+            type={BUTTON_TYPE.BUTTON}
+            onClick={() => setDisplayProductForm(true)}>
+            Add Product
+          </Button>
+        )}
       </div>
       <div className={s.productsWrapper}>
         {products.map(
@@ -84,6 +109,9 @@ const Home = (): JSX.Element => {
           ),
         )}
       </div>
+      {checkFeatureEnabled(FEATURE_FLAGS.LIST_NEW_PRODUCTS) && (
+        <NewProductForm show={displayProductForm} close={closeNewProductForm} />
+      )}
     </div>
   );
 };
