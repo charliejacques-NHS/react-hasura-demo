@@ -1,5 +1,5 @@
 {
-  "resource_version": 51,
+  "resource_version": 97,
   "metadata": {
     "version": 3,
     "sources": [
@@ -7,6 +7,297 @@
         "name": "data",
         "kind": "postgres",
         "tables": [
+          {
+            "table": {
+              "name": "basket",
+              "schema": "public"
+            },
+            "object_relationships": [
+              {
+                "name": "user",
+                "using": {
+                  "foreign_key_constraint_on": "user_id"
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "basket_products",
+                "using": {
+                  "foreign_key_constraint_on": {
+                    "column": "basket_id",
+                    "table": {
+                      "name": "basket_products",
+                      "schema": "public"
+                    }
+                  }
+                }
+              }
+            ],
+            "insert_permissions": [
+              {
+                "role": "user_base",
+                "permission": {
+                  "check": {
+                    "user_id": {
+                      "_eq": "X-Hasura-User-Id"
+                    }
+                  },
+                  "columns": [
+                    "user_id"
+                  ]
+                },
+                "comment": ""
+              },
+              {
+                "role": "user_elevated",
+                "permission": {
+                  "check": {},
+                  "columns": [
+                    "user_id"
+                  ]
+                },
+                "comment": ""
+              }
+            ],
+            "select_permissions": [
+              {
+                "role": "user_base",
+                "permission": {
+                  "columns": [
+                    "complete",
+                    "created_at",
+                    "id",
+                    "updated_at"
+                  ],
+                  "filter": {
+                    "user_id": {
+                      "_eq": "X-Hasura-User-Id"
+                    }
+                  },
+                  "allow_aggregations": true
+                },
+                "comment": ""
+              },
+              {
+                "role": "user_elevated",
+                "permission": {
+                  "columns": [
+                    "complete",
+                    "created_at",
+                    "id",
+                    "updated_at",
+                    "user_id"
+                  ],
+                  "filter": {},
+                  "allow_aggregations": true
+                },
+                "comment": ""
+              }
+            ],
+            "update_permissions": [
+              {
+                "role": "user_base",
+                "permission": {
+                  "columns": [
+                    "complete"
+                  ],
+                  "filter": {
+                    "user_id": {
+                      "_eq": "X-Hasura-User-Id"
+                    }
+                  },
+                  "check": {
+                    "user_id": {
+                      "_eq": "X-Hasura-User-Id"
+                    }
+                  }
+                },
+                "comment": ""
+              },
+              {
+                "role": "user_elevated",
+                "permission": {
+                  "columns": [
+                    "complete",
+                    "id",
+                    "user_id"
+                  ],
+                  "filter": {},
+                  "check": {}
+                },
+                "comment": ""
+              }
+            ],
+            "delete_permissions": [
+              {
+                "role": "user_elevated",
+                "permission": {
+                  "filter": {}
+                },
+                "comment": ""
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "basket_products",
+              "schema": "public"
+            },
+            "object_relationships": [
+              {
+                "name": "basket",
+                "using": {
+                  "foreign_key_constraint_on": "basket_id"
+                }
+              },
+              {
+                "name": "product",
+                "using": {
+                  "foreign_key_constraint_on": "product_id"
+                }
+              }
+            ],
+            "insert_permissions": [
+              {
+                "role": "user_base",
+                "permission": {
+                  "check": {
+                    "basket": {
+                      "user_id": {
+                        "_eq": "X-Hasura-User-Id"
+                      }
+                    }
+                  },
+                  "columns": [
+                    "created_at",
+                    "updated_at",
+                    "basket_id",
+                    "id",
+                    "product_id"
+                  ]
+                },
+                "comment": ""
+              },
+              {
+                "role": "user_elevated",
+                "permission": {
+                  "check": {},
+                  "columns": [
+                    "created_at",
+                    "updated_at",
+                    "basket_id",
+                    "id",
+                    "product_id"
+                  ]
+                },
+                "comment": ""
+              }
+            ],
+            "select_permissions": [
+              {
+                "role": "user_base",
+                "permission": {
+                  "columns": [
+                    "created_at",
+                    "updated_at",
+                    "basket_id",
+                    "id",
+                    "product_id"
+                  ],
+                  "filter": {
+                    "basket": {
+                      "user_id": {
+                        "_eq": "X-Hasura-User-Id"
+                      }
+                    }
+                  },
+                  "allow_aggregations": true
+                },
+                "comment": ""
+              },
+              {
+                "role": "user_elevated",
+                "permission": {
+                  "columns": [
+                    "created_at",
+                    "updated_at",
+                    "basket_id",
+                    "id",
+                    "product_id"
+                  ],
+                  "filter": {}
+                },
+                "comment": ""
+              }
+            ],
+            "update_permissions": [
+              {
+                "role": "user_base",
+                "permission": {
+                  "columns": [
+                    "created_at",
+                    "updated_at",
+                    "basket_id",
+                    "id",
+                    "product_id"
+                  ],
+                  "filter": {
+                    "basket": {
+                      "user_id": {
+                        "_eq": "X-Hasura-User-Id"
+                      }
+                    }
+                  },
+                  "check": {
+                    "basket": {
+                      "user_id": {
+                        "_eq": "X-Hasura-User-Id"
+                      }
+                    }
+                  }
+                },
+                "comment": ""
+              },
+              {
+                "role": "user_elevated",
+                "permission": {
+                  "columns": [
+                    "created_at",
+                    "updated_at",
+                    "basket_id",
+                    "id",
+                    "product_id"
+                  ],
+                  "filter": {},
+                  "check": {}
+                },
+                "comment": ""
+              }
+            ],
+            "delete_permissions": [
+              {
+                "role": "user_base",
+                "permission": {
+                  "filter": {
+                    "basket": {
+                      "user_id": {
+                        "_eq": "X-Hasura-User-Id"
+                      }
+                    }
+                  }
+                },
+                "comment": ""
+              },
+              {
+                "role": "user_elevated",
+                "permission": {
+                  "filter": {}
+                },
+                "comment": ""
+              }
+            ]
+          },
           {
             "table": {
               "name": "categories",
@@ -30,7 +321,11 @@
               {
                 "role": "user_base",
                 "permission": {
-                  "columns": ["friendly_name", "name", "id"],
+                  "columns": [
+                    "friendly_name",
+                    "name",
+                    "id"
+                  ],
                   "filter": {},
                   "allow_aggregations": true
                 },
@@ -39,7 +334,11 @@
               {
                 "role": "user_elevated",
                 "permission": {
-                  "columns": ["friendly_name", "name", "id"],
+                  "columns": [
+                    "friendly_name",
+                    "name",
+                    "id"
+                  ],
                   "filter": {},
                   "allow_aggregations": true
                 },
@@ -50,7 +349,11 @@
               {
                 "role": "user_base",
                 "permission": {
-                  "columns": ["friendly_name", "name", "id"],
+                  "columns": [
+                    "friendly_name",
+                    "name",
+                    "id"
+                  ],
                   "filter": {},
                   "check": {}
                 },
@@ -175,7 +478,7 @@
                     "id"
                   ],
                   "filter": {
-                    "_and": [
+                    "_or": [
                       {
                         "users": {
                           "user_id": {
@@ -305,11 +608,29 @@
                 }
               }
             ],
+            "insert_permissions": [
+              {
+                "role": "user_elevated",
+                "permission": {
+                  "check": {},
+                  "columns": [
+                    "category_id",
+                    "id",
+                    "product_id"
+                  ]
+                },
+                "comment": ""
+              }
+            ],
             "select_permissions": [
               {
                 "role": "user_base",
                 "permission": {
-                  "columns": ["category_id", "id", "product_id"],
+                  "columns": [
+                    "category_id",
+                    "id",
+                    "product_id"
+                  ],
                   "filter": {},
                   "allow_aggregations": true
                 },
@@ -318,7 +639,11 @@
               {
                 "role": "user_elevated",
                 "permission": {
-                  "columns": ["category_id", "id", "product_id"],
+                  "columns": [
+                    "category_id",
+                    "id",
+                    "product_id"
+                  ],
                   "filter": {},
                   "allow_aggregations": true
                 },
@@ -345,11 +670,34 @@
                 }
               }
             ],
+            "insert_permissions": [
+              {
+                "role": "user_elevated",
+                "permission": {
+                  "check": {},
+                  "columns": [
+                    "description",
+                    "image_src",
+                    "name",
+                    "price"
+                  ]
+                },
+                "comment": ""
+              }
+            ],
             "select_permissions": [
               {
                 "role": "user_base",
                 "permission": {
-                  "columns": ["price", "description", "name", "id"],
+                  "columns": [
+                    "price",
+                    "description",
+                    "image_src",
+                    "name",
+                    "created_at",
+                    "updated_at",
+                    "id"
+                  ],
                   "filter": {},
                   "allow_aggregations": true
                 },
@@ -358,7 +706,13 @@
               {
                 "role": "user_elevated",
                 "permission": {
-                  "columns": ["price", "description", "name", "id"],
+                  "columns": [
+                    "description",
+                    "id",
+                    "image_src",
+                    "name",
+                    "price"
+                  ],
                   "filter": {},
                   "allow_aggregations": true
                 },
@@ -369,7 +723,12 @@
               {
                 "role": "user_elevated",
                 "permission": {
-                  "columns": ["price", "description", "name", "id"],
+                  "columns": [
+                    "description",
+                    "image_src",
+                    "name",
+                    "price"
+                  ],
                   "filter": {},
                   "check": {}
                 },
@@ -459,7 +818,11 @@
                       }
                     }
                   },
-                  "columns": ["friendly_name", "name", "id"]
+                  "columns": [
+                    "friendly_name",
+                    "name",
+                    "id"
+                  ]
                 },
                 "comment": ""
               }
@@ -468,7 +831,11 @@
               {
                 "role": "user_base",
                 "permission": {
-                  "columns": ["friendly_name", "name", "id"],
+                  "columns": [
+                    "friendly_name",
+                    "name",
+                    "id"
+                  ],
                   "filter": {
                     "users": {
                       "user_id": {
@@ -482,7 +849,11 @@
               {
                 "role": "user_elevated",
                 "permission": {
-                  "columns": ["friendly_name", "name", "id"],
+                  "columns": [
+                    "friendly_name",
+                    "name",
+                    "id"
+                  ],
                   "filter": {
                     "users": {
                       "user_id": {
@@ -499,7 +870,11 @@
               {
                 "role": "user_elevated",
                 "permission": {
-                  "columns": ["friendly_name", "name", "id"],
+                  "columns": [
+                    "friendly_name",
+                    "name",
+                    "id"
+                  ],
                   "filter": {
                     "users": {
                       "user_id": {
@@ -561,6 +936,18 @@
             },
             "array_relationships": [
               {
+                "name": "baskets",
+                "using": {
+                  "foreign_key_constraint_on": {
+                    "column": "user_id",
+                    "table": {
+                      "name": "basket",
+                      "schema": "public"
+                    }
+                  }
+                }
+              },
+              {
                 "name": "feature_flags",
                 "using": {
                   "foreign_key_constraint_on": {
@@ -598,7 +985,12 @@
                       }
                     }
                   },
-                  "columns": ["username", "created_at", "updated_at", "id"]
+                  "columns": [
+                    "username",
+                    "created_at",
+                    "updated_at",
+                    "id"
+                  ]
                 },
                 "comment": ""
               }
@@ -607,7 +999,12 @@
               {
                 "role": "user_base",
                 "permission": {
-                  "columns": ["username", "created_at", "updated_at", "id"],
+                  "columns": [
+                    "username",
+                    "created_at",
+                    "updated_at",
+                    "id"
+                  ],
                   "filter": {
                     "id": {
                       "_eq": "X-Hasura-User-Id"
@@ -620,7 +1017,12 @@
               {
                 "role": "user_elevated",
                 "permission": {
-                  "columns": ["username", "created_at", "updated_at", "id"],
+                  "columns": [
+                    "username",
+                    "created_at",
+                    "updated_at",
+                    "id"
+                  ],
                   "filter": {
                     "groups": {
                       "user_group": {
@@ -639,7 +1041,12 @@
               {
                 "role": "user_elevated",
                 "permission": {
-                  "columns": ["username", "created_at", "updated_at", "id"],
+                  "columns": [
+                    "username",
+                    "created_at",
+                    "updated_at",
+                    "id"
+                  ],
                   "filter": {
                     "groups": {
                       "user_group": {
@@ -719,14 +1126,11 @@
         "definition": {
           "handler": "{{NODE_APP_URL}}/api/user/details",
           "output_type": "GetUserDetailsOutput",
+          "forward_client_headers": true,
           "headers": [
             {
               "name": "Authorization",
               "value": "Bearer {{MICROSERVICE_API_KEY}}"
-            },
-            {
-              "name": "Content-Type",
-              "value": "application/json"
             }
           ],
           "arguments": [
@@ -768,7 +1172,9 @@
             "query_params": {},
             "request_headers": {
               "add_headers": {},
-              "remove_headers": ["content-type"]
+              "remove_headers": [
+                "content-type"
+              ]
             },
             "template_engine": "Kriti",
             "version": 2
@@ -785,6 +1191,15 @@
           "fields": [
             {
               "name": "username",
+              "type": "String!"
+            }
+          ]
+        },
+        {
+          "name": "CompleteBasketInput",
+          "fields": [
+            {
+              "name": "user_id",
               "type": "String!"
             }
           ]
@@ -816,6 +1231,15 @@
               "type": "String!"
             }
           ]
+        },
+        {
+          "name": "CompleteBasketOutput",
+          "fields": [
+            {
+              "name": "message",
+              "type": "String!"
+            }
+          ]
         }
       ]
     },
@@ -828,7 +1252,9 @@
             "query_name": "GET_USER_DETAILS"
           }
         },
-        "methods": ["GET"],
+        "methods": [
+          "GET"
+        ],
         "name": "GET_USER_DETAILS",
         "url": "get-user-details/:username"
       }

@@ -49,22 +49,6 @@ apiRouter.use(apiKeyMiddleware);
 
 app.use('/api', apiRouter);
 
-apiRouter.post('/basket', (req, res) => {
-  try {
-    const { products } = req.body;
-
-    const basketTotal = products
-      .map(({ price }) => price)
-      .reduce((acc, curr) => acc + curr);
-
-    return res
-      .status(200)
-      .send({ message: `Your basket total is: £${basketTotal.toFixed(2)}` });
-  } catch (e) {
-    return res.status(400).send({ message: 'Products not supplied' });
-  }
-});
-
 apiRouter.post('/user/details', async (req, res) => {
   try {
     const { username } = req.body;

@@ -99,3 +99,23 @@ export const CREATE_NEW_BASKET = gql<
     }
   }
 `;
+
+interface COMPLETE_BASKET {
+  update_basket_by_pk: {
+    id: string;
+    complete: boolean;
+  };
+}
+
+export interface COMPLETE_BASKET_VARIABLES {
+  id: string;
+}
+
+export const COMPLETE_BASKET = gql<COMPLETE_BASKET, COMPLETE_BASKET_VARIABLES>`
+  mutation COMPLETE_BASKET($id: uuid!) {
+    update_basket_by_pk(pk_columns: { id: $id }, _set: { complete: true }) {
+      id
+      complete
+    }
+  }
+`;

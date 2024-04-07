@@ -40,6 +40,10 @@ export interface BasketContextValue {
    * @param id The id of the product to remove
    */
   removeItemFromBasket(id: string): Promise<void>;
+  /**
+   * Function to close the current basket
+   */
+  completeBasket(): Promise<void>;
 }
 
 const initialValue: BasketContextValue = {
@@ -57,6 +61,9 @@ const initialValue: BasketContextValue = {
     throw new Error('Function not implemented.');
   },
   numberOfGivenItemInBasket: function (_product_id: string): number {
+    throw new Error('Function not implemented.');
+  },
+  completeBasket: function (): Promise<void> {
     throw new Error('Function not implemented.');
   },
 };
@@ -77,10 +84,13 @@ export const BasketProvider = ({ children }: PropsWithChildren) => {
     MUTATIONS.REMOVE_ITEM_FROM_BASKET,
   );
   const [_newBasket, createBasket] = useMutation(MUTATIONS.CREATE_NEW_BASKET);
+  const [_completedBasket, completeBasket] = useMutation(
+    MUTATIONS.COMPLETE_BASKET,
+  );
 
   const totalPrice = useMemo(
     () =>
-      data?.basket[0].basket_products
+      data?.basket[0]?.basket_products
         .map(({ product }) => product.price)
         .reduce((acc, curr) => acc + curr) || 0,
     [data],
@@ -89,7 +99,7 @@ export const BasketProvider = ({ children }: PropsWithChildren) => {
   if (error) console.error('ERROR SUBSCRIBING TO BASKET', error);
 
   const addItemToBasket = async (product_id: string) => {
-    let basket_id = data?.basket[0].id;
+    let basket_id = data?.basket[0]?.id;
     if (!basket_id && userId)
       basket_id = await createBasket({ user_id: userId }).then(
         ({ data }) => data?.insert_basket_one.id,
@@ -100,7 +110,7 @@ export const BasketProvider = ({ children }: PropsWithChildren) => {
 
   const itemInBasket = useCallback(
     (product_id: string) =>
-      !!data?.basket[0].basket_products
+      !!data?.basket[0]?.basket_products
         .map(({ product }) => product.id)
         .includes(product_id),
     [data],
@@ -108,14 +118,14 @@ export const BasketProvider = ({ children }: PropsWithChildren) => {
 
   const numberOfGivenItemInBasket = useCallback(
     (product_id: string) =>
-      data?.basket[0].basket_products
+      data?.basket[0]?.basket_products
         .map(({ product }) => product.id)
         .filter(id => id === product_id).length || 0,
     [data],
   );
 
   const removeItemFromBasket = async (id: string) => {
-    const chosenProduct = data?.basket[0].basket_products.find(
+    const chosenProduct = data?.basket[0]?.basket_products.find(
       ({ product }) => id === product.id,
     );
 
@@ -134,6 +144,15 @@ export const BasketProvider = ({ children }: PropsWithChildren) => {
         itemInBasket,
         numberOfGivenItemInBasket,
         removeItemFromBasket,
+        completeBasket: () =>
+          Promise.resolve(
+            data?.basket[0].id
+              ? completeBasket({ id: data.basket[0].id })
+              : undefined,
+          ).then(res => {
+            if (res?.error || !res?.data)
+              throw new Error('Basket not fulfilled');
+          }),
       }}>
       {children}
     </BasketContext.Provider>

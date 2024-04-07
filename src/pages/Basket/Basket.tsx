@@ -1,16 +1,17 @@
 import { useBasketContext } from '@app/context';
 import s from './Basket.module.scss';
-import { DB } from '@app/types';
+import { DB, ROUTES } from '@app/types';
 import { useSiteTitle } from '@app/hooks';
-import { ProductQuantityPicker } from '@app/components';
+import { Button, ProductQuantityPicker } from '@app/components';
+import { useNavigate } from 'react-router-dom';
 
 /**
  * Component to render the basket page
  * @returns {JSX.Element}
  */
 const Basket = (): JSX.Element => {
-  const { basket, totalPrice } = useBasketContext();
-
+  const { basket, totalPrice, completeBasket } = useBasketContext();
+  const navigate = useNavigate();
   useSiteTitle('Basket');
 
   const distinctProducts = Object.values(
@@ -30,6 +31,11 @@ const Basket = (): JSX.Element => {
     }, {}) || {},
   );
 
+  const checkoutBasket = () =>
+    completeBasket()
+      .then(() => alert('Basket successfully checked out!'))
+      .then(() => navigate(ROUTES.HOME));
+
   return (
     <div className={s.wrapper}>
       {distinctProducts.map(({ id, product, quantity }) => (
@@ -42,6 +48,7 @@ const Basket = (): JSX.Element => {
       <div>
         <p>Basket Total: £{totalPrice.toFixed(2)}</p>
       </div>
+      <Button onClick={checkoutBasket}>Checkout Basket</Button>
     </div>
   );
 };
