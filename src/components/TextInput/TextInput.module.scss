@@ -1,4 +1,4 @@
-@import "../../theme/";
+@import '../../theme/';
 
 :root {
   // Spacing
@@ -29,7 +29,8 @@
 }
 
 .wrapper {
-  margin: var(--text-input--margin-vertical) var(--text-input--margin-horizontal);
+  margin: var(--text-input--margin-vertical)
+    var(--text-input--margin-horizontal);
   @include flex-with-align(flex-start, center, column);
 
   .label {
@@ -41,7 +42,11 @@
   }
 
   .input {
-    width: calc(100% - var(--text-input--input--padding-horizontal) - var(--text-input--margin-horizontal));
+    width: calc(
+      100% - var(--text-input--input--padding-horizontal) - var(
+          --text-input--margin-horizontal
+        )
+    );
 
     color: var(--text-input--input--color);
     background-color: var(--text-input--input--background-color);
@@ -54,7 +59,8 @@
     font-weight: var(--text-input--input--font-weight);
     line-height: var(--text-input--input--line-height);
 
-    padding: var(--text-input--input--padding-vertical) var(--text-input--input--padding-horizontal);
+    padding: var(--text-input--input--padding-vertical)
+      var(--text-input--input--padding-horizontal);
 
     &::placeholder {
       color: var(--text-input--input--color-placeholder);
