@@ -43,9 +43,7 @@
                       "_eq": "X-Hasura-User-Id"
                     }
                   },
-                  "columns": [
-                    "user_id"
-                  ]
+                  "columns": ["user_id"]
                 },
                 "comment": ""
               },
@@ -53,9 +51,7 @@
                 "role": "user_elevated",
                 "permission": {
                   "check": {},
-                  "columns": [
-                    "user_id"
-                  ]
+                  "columns": ["user_id"]
                 },
                 "comment": ""
               }
@@ -64,12 +60,7 @@
               {
                 "role": "user_base",
                 "permission": {
-                  "columns": [
-                    "complete",
-                    "created_at",
-                    "id",
-                    "updated_at"
-                  ],
+                  "columns": ["complete", "created_at", "id", "updated_at"],
                   "filter": {
                     "user_id": {
                       "_eq": "X-Hasura-User-Id"
@@ -99,9 +90,7 @@
               {
                 "role": "user_base",
                 "permission": {
-                  "columns": [
-                    "complete"
-                  ],
+                  "columns": ["complete"],
                   "filter": {
                     "user_id": {
                       "_eq": "X-Hasura-User-Id"
@@ -118,11 +107,7 @@
               {
                 "role": "user_elevated",
                 "permission": {
-                  "columns": [
-                    "complete",
-                    "id",
-                    "user_id"
-                  ],
+                  "columns": ["complete", "id", "user_id"],
                   "filter": {},
                   "check": {}
                 },
@@ -321,11 +306,7 @@
               {
                 "role": "user_base",
                 "permission": {
-                  "columns": [
-                    "friendly_name",
-                    "name",
-                    "id"
-                  ],
+                  "columns": ["friendly_name", "name", "id"],
                   "filter": {},
                   "allow_aggregations": true
                 },
@@ -334,11 +315,7 @@
               {
                 "role": "user_elevated",
                 "permission": {
-                  "columns": [
-                    "friendly_name",
-                    "name",
-                    "id"
-                  ],
+                  "columns": ["friendly_name", "name", "id"],
                   "filter": {},
                   "allow_aggregations": true
                 },
@@ -349,11 +326,7 @@
               {
                 "role": "user_base",
                 "permission": {
-                  "columns": [
-                    "friendly_name",
-                    "name",
-                    "id"
-                  ],
+                  "columns": ["friendly_name", "name", "id"],
                   "filter": {},
                   "check": {}
                 },
@@ -613,11 +586,7 @@
                 "role": "user_elevated",
                 "permission": {
                   "check": {},
-                  "columns": [
-                    "category_id",
-                    "id",
-                    "product_id"
-                  ]
+                  "columns": ["category_id", "id", "product_id"]
                 },
                 "comment": ""
               }
@@ -626,11 +595,7 @@
               {
                 "role": "user_base",
                 "permission": {
-                  "columns": [
-                    "category_id",
-                    "id",
-                    "product_id"
-                  ],
+                  "columns": ["category_id", "id", "product_id"],
                   "filter": {},
                   "allow_aggregations": true
                 },
@@ -639,11 +604,7 @@
               {
                 "role": "user_elevated",
                 "permission": {
-                  "columns": [
-                    "category_id",
-                    "id",
-                    "product_id"
-                  ],
+                  "columns": ["category_id", "id", "product_id"],
                   "filter": {},
                   "allow_aggregations": true
                 },
@@ -675,12 +636,7 @@
                 "role": "user_elevated",
                 "permission": {
                   "check": {},
-                  "columns": [
-                    "description",
-                    "image_src",
-                    "name",
-                    "price"
-                  ]
+                  "columns": ["description", "image_src", "name", "price"]
                 },
                 "comment": ""
               }
@@ -723,12 +679,7 @@
               {
                 "role": "user_elevated",
                 "permission": {
-                  "columns": [
-                    "description",
-                    "image_src",
-                    "name",
-                    "price"
-                  ],
+                  "columns": ["description", "image_src", "name", "price"],
                   "filter": {},
                   "check": {}
                 },
@@ -818,11 +769,7 @@
                       }
                     }
                   },
-                  "columns": [
-                    "friendly_name",
-                    "name",
-                    "id"
-                  ]
+                  "columns": ["friendly_name", "name", "id"]
                 },
                 "comment": ""
               }
@@ -831,11 +778,7 @@
               {
                 "role": "user_base",
                 "permission": {
-                  "columns": [
-                    "friendly_name",
-                    "name",
-                    "id"
-                  ],
+                  "columns": ["friendly_name", "name", "id"],
                   "filter": {
                     "users": {
                       "user_id": {
@@ -849,11 +792,7 @@
               {
                 "role": "user_elevated",
                 "permission": {
-                  "columns": [
-                    "friendly_name",
-                    "name",
-                    "id"
-                  ],
+                  "columns": ["friendly_name", "name", "id"],
                   "filter": {
                     "users": {
                       "user_id": {
@@ -870,11 +809,7 @@
               {
                 "role": "user_elevated",
                 "permission": {
-                  "columns": [
-                    "friendly_name",
-                    "name",
-                    "id"
-                  ],
+                  "columns": ["friendly_name", "name", "id"],
                   "filter": {
                     "users": {
                       "user_id": {
@@ -985,12 +920,7 @@
                       }
                     }
                   },
-                  "columns": [
-                    "username",
-                    "created_at",
-                    "updated_at",
-                    "id"
-                  ]
+                  "columns": ["username", "created_at", "updated_at", "id"]
                 },
                 "comment": ""
               }
@@ -999,12 +929,7 @@
               {
                 "role": "user_base",
                 "permission": {
-                  "columns": [
-                    "username",
-                    "created_at",
-                    "updated_at",
-                    "id"
-                  ],
+                  "columns": ["username", "created_at", "updated_at", "id"],
                   "filter": {
                     "id": {
                       "_eq": "X-Hasura-User-Id"
@@ -1017,12 +942,7 @@
               {
                 "role": "user_elevated",
                 "permission": {
-                  "columns": [
-                    "username",
-                    "created_at",
-                    "updated_at",
-                    "id"
-                  ],
+                  "columns": ["username", "created_at", "updated_at", "id"],
                   "filter": {
                     "groups": {
                       "user_group": {
@@ -1041,12 +961,7 @@
               {
                 "role": "user_elevated",
                 "permission": {
-                  "columns": [
-                    "username",
-                    "created_at",
-                    "updated_at",
-                    "id"
-                  ],
+                  "columns": ["username", "created_at", "updated_at", "id"],
                   "filter": {
                     "groups": {
                       "user_group": {
@@ -1172,9 +1087,7 @@
             "query_params": {},
             "request_headers": {
               "add_headers": {},
-              "remove_headers": [
-                "content-type"
-              ]
+              "remove_headers": ["content-type"]
             },
             "template_engine": "Kriti",
             "version": 2
@@ -1252,9 +1165,7 @@
             "query_name": "GET_USER_DETAILS"
           }
         },
-        "methods": [
-          "GET"
-        ],
+        "methods": ["GET"],
         "name": "GET_USER_DETAILS",
         "url": "get-user-details/:username"
       }
