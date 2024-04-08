@@ -114,7 +114,7 @@ I've included the command to start running Hasura and the db in Docker in the [u
 This will be created with an initially empty database. So I've included a database dump with all the relevant tables and base data set up for you to get started. You will need to run the following command to seed the database (changing `<your-db-container>` for the name of your container, this can be found by running `docker container list`):
 
 ```bash
-docker exec -i react-hasura-demo-postgres-1 pg_restore -U postgres -d postgres --clean < ./hasura_setup/hasura_dump.sql
+docker exec -i react-hasura-demo-postgres-1 pg_restore -U postgres -d postgres < ./hasura_setup/hasura_dump.sql
 ```
 
 Once you have seeded the database and have Hasura up and running locally navigate to the [console](http://localhost:8080/console/settings/metadata-actions) and click `Import Metadata`. Once you import the [metadata file](./hasura_setup/hasura_metadata.json) navigate to the [data tab](http://localhost:8080/console/data/data/schema/public) to see the structure of the tables that have been set up.
