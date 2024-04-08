@@ -30,11 +30,7 @@
               {
                 "role": "user_base",
                 "permission": {
-                  "columns": [
-                    "friendly_name",
-                    "name",
-                    "id"
-                  ],
+                  "columns": ["friendly_name", "name", "id"],
                   "filter": {},
                   "allow_aggregations": true
                 },
@@ -43,11 +39,7 @@
               {
                 "role": "user_elevated",
                 "permission": {
-                  "columns": [
-                    "friendly_name",
-                    "name",
-                    "id"
-                  ],
+                  "columns": ["friendly_name", "name", "id"],
                   "filter": {},
                   "allow_aggregations": true
                 },
@@ -58,11 +50,7 @@
               {
                 "role": "user_base",
                 "permission": {
-                  "columns": [
-                    "friendly_name",
-                    "name",
-                    "id"
-                  ],
+                  "columns": ["friendly_name", "name", "id"],
                   "filter": {},
                   "check": {}
                 },
@@ -321,11 +309,7 @@
               {
                 "role": "user_base",
                 "permission": {
-                  "columns": [
-                    "category_id",
-                    "id",
-                    "product_id"
-                  ],
+                  "columns": ["category_id", "id", "product_id"],
                   "filter": {},
                   "allow_aggregations": true
                 },
@@ -334,11 +318,7 @@
               {
                 "role": "user_elevated",
                 "permission": {
-                  "columns": [
-                    "category_id",
-                    "id",
-                    "product_id"
-                  ],
+                  "columns": ["category_id", "id", "product_id"],
                   "filter": {},
                   "allow_aggregations": true
                 },
@@ -369,12 +349,7 @@
               {
                 "role": "user_base",
                 "permission": {
-                  "columns": [
-                    "price",
-                    "description",
-                    "name",
-                    "id"
-                  ],
+                  "columns": ["price", "description", "name", "id"],
                   "filter": {},
                   "allow_aggregations": true
                 },
@@ -383,12 +358,7 @@
               {
                 "role": "user_elevated",
                 "permission": {
-                  "columns": [
-                    "price",
-                    "description",
-                    "name",
-                    "id"
-                  ],
+                  "columns": ["price", "description", "name", "id"],
                   "filter": {},
                   "allow_aggregations": true
                 },
@@ -399,12 +369,7 @@
               {
                 "role": "user_elevated",
                 "permission": {
-                  "columns": [
-                    "price",
-                    "description",
-                    "name",
-                    "id"
-                  ],
+                  "columns": ["price", "description", "name", "id"],
                   "filter": {},
                   "check": {}
                 },
@@ -494,11 +459,7 @@
                       }
                     }
                   },
-                  "columns": [
-                    "friendly_name",
-                    "name",
-                    "id"
-                  ]
+                  "columns": ["friendly_name", "name", "id"]
                 },
                 "comment": ""
               }
@@ -507,11 +468,7 @@
               {
                 "role": "user_base",
                 "permission": {
-                  "columns": [
-                    "friendly_name",
-                    "name",
-                    "id"
-                  ],
+                  "columns": ["friendly_name", "name", "id"],
                   "filter": {
                     "users": {
                       "user_id": {
@@ -525,11 +482,7 @@
               {
                 "role": "user_elevated",
                 "permission": {
-                  "columns": [
-                    "friendly_name",
-                    "name",
-                    "id"
-                  ],
+                  "columns": ["friendly_name", "name", "id"],
                   "filter": {
                     "users": {
                       "user_id": {
@@ -546,11 +499,7 @@
               {
                 "role": "user_elevated",
                 "permission": {
-                  "columns": [
-                    "friendly_name",
-                    "name",
-                    "id"
-                  ],
+                  "columns": ["friendly_name", "name", "id"],
                   "filter": {
                     "users": {
                       "user_id": {
@@ -649,12 +598,7 @@
                       }
                     }
                   },
-                  "columns": [
-                    "username",
-                    "created_at",
-                    "updated_at",
-                    "id"
-                  ]
+                  "columns": ["username", "created_at", "updated_at", "id"]
                 },
                 "comment": ""
               }
@@ -663,12 +607,7 @@
               {
                 "role": "user_base",
                 "permission": {
-                  "columns": [
-                    "username",
-                    "created_at",
-                    "updated_at",
-                    "id"
-                  ],
+                  "columns": ["username", "created_at", "updated_at", "id"],
                   "filter": {
                     "id": {
                       "_eq": "X-Hasura-User-Id"
@@ -681,12 +620,7 @@
               {
                 "role": "user_elevated",
                 "permission": {
-                  "columns": [
-                    "username",
-                    "created_at",
-                    "updated_at",
-                    "id"
-                  ],
+                  "columns": ["username", "created_at", "updated_at", "id"],
                   "filter": {
                     "groups": {
                       "user_group": {
@@ -705,12 +639,7 @@
               {
                 "role": "user_elevated",
                 "permission": {
-                  "columns": [
-                    "username",
-                    "created_at",
-                    "updated_at",
-                    "id"
-                  ],
+                  "columns": ["username", "created_at", "updated_at", "id"],
                   "filter": {
                     "groups": {
                       "user_group": {
