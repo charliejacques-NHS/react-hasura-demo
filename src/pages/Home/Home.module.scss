@@ -3,36 +3,30 @@
 .wrapper {
   background-color: var(--pure-white);
   width: 100%;
+  
+  .title {
+    padding: 0 10%;
+  }
 
   .filters {
     @include flex-with-align(flex-start, center, row);
+    --pill--margin-vertical: 0;
+    padding: 0 10%;
+
+    .search {
+      --text-input--margin-vertical: 0;
+      --text-input--margin-horizontal: 0;
+    }
     .active {
       --pill--background-color: var(--blue-whale);
+    }
+    .categories {
+      @include flex-with-align(flex-start, center, row);
+      height: 100%;
     }
   }
 
   .productsWrapper {
-    width: 100%;
-    .product {
-      width: 80%;
-      padding: 0 10%;
-      .info {
-        margin: var(--gutter-sm) 0;
-        @include flex-with-align(space-between, center, row);
-        .image {
-          width: 64px;
-          height: 64px;
-          object-fit: contain;
-        }
-      }
-
-      .categoriesWrapper {
-        width: 50%;
-      }
-    }
+    width: 100%;   
   }
-}
-
-.row {
-  @include row();
 }

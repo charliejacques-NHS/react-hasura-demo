@@ -14,6 +14,7 @@
   margin: var(--pill--margin-vertical) var(--pill--margin-horizontal);
   padding: var(--pill--padding-vertical) var(--pill--padding-horizontal);
   border-radius: var(--pill--border-radius);
+  white-space: nowrap;
 }
 
 .clickable {

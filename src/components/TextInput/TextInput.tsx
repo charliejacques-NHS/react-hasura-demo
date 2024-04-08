@@ -8,6 +8,7 @@ export interface TextInputProps
   extends Omit<HTMLProps<HTMLInputElement>, 'type' | 'onChange'> {
   onChange: (text: string) => void;
   label?: string;
+  wrapperClassName?: string;
 }
 
 /**
@@ -16,13 +17,14 @@ export interface TextInputProps
  * @returns {JSX.Element}
  */
 const TextInput = ({
+  wrapperClassName,
   className,
   onChange,
   label,
   ...props
 }: TextInputProps): JSX.Element => {
   return (
-    <div className={s.wrapper}>
+    <div className={[s.wrapper, wrapperClassName].join(' ')}>
       {label && <label className={s.label}>{label}</label>}
       <input
         className={[s.input, className].join(' ')}

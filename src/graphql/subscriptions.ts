@@ -7,7 +7,7 @@ export interface GET_ACTIVE_BASKET {
     basket_products_aggregate: DB.Aggregate;
     basket_products: {
       id: string;
-      product: Omit<DB.Product, 'created_at' | 'updated_at' | 'description'>;
+      product: Omit<DB.Product, 'created_at' | 'updated_at'>;
     }[];
   }[];
 }
@@ -27,6 +27,7 @@ export const GET_ACTIVE_BASKET = gql<GET_ACTIVE_BASKET>`
           id
           name
           price
+          description
           image_src
         }
       }

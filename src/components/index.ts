@@ -8,8 +8,16 @@ import Layout, { LayoutProps } from './Layout/Layout';
 import Modal, { ModalProps } from './Modal/Modal';
 import PrivateRouteWrapper from './PrivateRouteWrapper/PrivateRouteWrapper';
 import ProductQuantityPicker from './ProductQuantityPicker/ProductQuantityPicker';
+import Product, { ProductProps } from './Product/Product';
 
-export type { ButtonProps, LayoutProps, ModalProps, PillProps, TextInputProps };
+export type {
+  ButtonProps,
+  LayoutProps,
+  ModalProps,
+  PillProps,
+  TextInputProps,
+  ProductProps,
+};
 
 export {
   App,
@@ -22,4 +30,5 @@ export {
   TextInput,
   PrivateRouteWrapper,
   ProductQuantityPicker,
+  Product,
 };

@@ -2,7 +2,7 @@ import { useBasketContext } from '@app/context';
 import s from './Basket.module.scss';
 import { DB, ROUTES } from '@app/types';
 import { useSiteTitle } from '@app/hooks';
-import { Button, ProductQuantityPicker } from '@app/components';
+import { Button, Product } from '@app/components';
 import { useNavigate } from 'react-router-dom';
 
 /**
@@ -18,7 +18,7 @@ const Basket = (): JSX.Element => {
     basket?.basket_products.reduce<{
       [key: string]: {
         id: string;
-        product: Omit<DB.Product, 'created_at' | 'updated_at' | 'description'>;
+        product: Omit<DB.Product, 'created_at' | 'updated_at'>;
         quantity: number;
       };
     }>((acc, item) => {
@@ -38,17 +38,13 @@ const Basket = (): JSX.Element => {
 
   return (
     <div className={s.wrapper}>
-      {distinctProducts.map(({ id, product, quantity }) => (
-        <div key={id}>
-          <h3>{product.name}</h3>
-          <p>Product Total: £{(product.price * quantity).toFixed(2)}</p>
-          <ProductQuantityPicker id={product.id} />
-        </div>
+      {distinctProducts.map(({ product }) => (
+        <Product {...product} withTotalPrice />
       ))}
-      <div>
+      <div className={s.checkoutWrapper}>
         <p>Basket Total: £{totalPrice.toFixed(2)}</p>
+        <Button onClick={checkoutBasket}>Checkout Basket</Button>
       </div>
-      <Button onClick={checkoutBasket}>Checkout Basket</Button>
     </div>
   );
 };
