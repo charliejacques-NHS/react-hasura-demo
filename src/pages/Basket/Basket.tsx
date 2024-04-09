@@ -4,6 +4,7 @@ import { DB, ROUTES } from '@app/types';
 import { useSiteTitle } from '@app/hooks';
 import { Button, Product } from '@app/components';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 /**
  * Component to render the basket page
@@ -13,6 +14,7 @@ const Basket = (): JSX.Element => {
   const { basket, totalPrice, completeBasket } = useBasketContext();
   const navigate = useNavigate();
   useSiteTitle('Basket');
+  const { t } = useTranslation();
 
   const distinctProducts = Object.values(
     basket?.basket_products.reduce<{
@@ -42,8 +44,8 @@ const Basket = (): JSX.Element => {
         <Product {...product} withTotalPrice />
       ))}
       <div className={s.checkoutWrapper}>
-        <p>Basket Total: £{totalPrice.toFixed(2)}</p>
-        <Button onClick={checkoutBasket}>Checkout Basket</Button>
+        <p>{t('basketTotal', { x: totalPrice.toFixed(2) })}</p>
+        <Button onClick={checkoutBasket}>{t('checkoutBasket')}</Button>
       </div>
     </div>
   );

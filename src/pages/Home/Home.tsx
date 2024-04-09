@@ -5,6 +5,7 @@ import { BUTTON_TYPE, Button, Pill, Product, TextInput } from '@app/components';
 import { NewProductForm } from '@app/forms';
 import { useFeatureFlagsContext } from '@app/context';
 import { FEATURE_FLAGS } from '@app/types';
+import { useTranslation } from 'react-i18next';
 
 /**
  * The home page of the application
@@ -21,7 +22,7 @@ const Home = (): JSX.Element => {
   const [displayProductForm, setDisplayProductForm] = useState<boolean>(false);
 
   const { checkFeatureEnabled } = useFeatureFlagsContext();
-
+  const { t } = useTranslation();
   const productCategories = products.map(({ categories }) => categories).flat();
   const distinctProductIds = Array.from(
     new Set(productCategories.map(({ category }) => category.id)),
@@ -47,14 +48,14 @@ const Home = (): JSX.Element => {
   return (
     <div className={s.wrapper}>
       <h2 className={s.title}>
-        Products {totalProducts ? `(${totalProducts})` : ''}
+        {t('products')} {totalProducts ? `(${totalProducts})` : ''}
       </h2>
       <div className={s.filters}>
         <TextInput
           wrapperClassName={s.search}
           value={filterText}
           onChange={text => setFilterText(text)}
-          placeholder="Search for products"
+          placeholder={t('searchForProducts')}
         />
         <div className={s.categories}>
           {distinctProductIds
@@ -83,7 +84,7 @@ const Home = (): JSX.Element => {
           <Button
             type={BUTTON_TYPE.BUTTON}
             onClick={() => setDisplayProductForm(true)}>
-            Add Product
+            {t('newProduct')}
           </Button>
         )}
       </div>

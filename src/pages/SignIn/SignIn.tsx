@@ -32,7 +32,7 @@ const SignIn = (): JSX.Element => {
 
   return (
     <div className={s.wrapper}>
-      {error && <p>GraphQL Error: {JSON.stringify(error)}</p>}
+      {error && <p>{JSON.stringify(error)}</p>}
       <SignInForm />
     </div>
   );

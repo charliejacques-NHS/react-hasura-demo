@@ -2,6 +2,7 @@ import { useProducts } from '@app/hooks';
 import s from './Product.module.scss';
 import { ProductQuantityPicker, Button, Pill } from '@app/components';
 import { useBasketContext } from '@app/context';
+import { useTranslation } from 'react-i18next';
 
 type ProductInformation = ReturnType<typeof useProducts>['products'][number];
 
@@ -29,6 +30,7 @@ const Product = ({
 }: ProductProps): JSX.Element => {
   const { itemInBasket, addItemToBasket, numberOfGivenItemInBasket } =
     useBasketContext();
+  const { t } = useTranslation();
 
   return (
     <div className={s.wrapper} key={id}>
@@ -40,18 +42,22 @@ const Product = ({
         <p className={s.description}>{description}</p>
         <p className={s.price}>
           {withTotalPrice
-            ? `Product Total: £${(price * numberOfGivenItemInBasket(id)).toFixed(2)}`
+            ? t('productTotal', {
+                x: (price * numberOfGivenItemInBasket(id)).toFixed(2),
+              })
             : `£${price.toFixed(2)}`}
         </p>
         {!itemInBasket(id) ? (
-          <Button onClick={() => addItemToBasket(id)}>Add to basket</Button>
+          <Button onClick={() => addItemToBasket(id)}>
+            {t('addToBasket')}
+          </Button>
         ) : (
           <ProductQuantityPicker id={id} />
         )}
       </div>
       {categories.length ? (
         <div className={s.categoriesWrapper}>
-          <span>Categories: </span>
+          <span>{t('categories')}: </span>
           {categories.map(({ category }) => (
             <Pill text={category.friendly_name} key={`${id}-${category.id}`} />
           ))}

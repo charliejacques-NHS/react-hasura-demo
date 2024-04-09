@@ -4,6 +4,7 @@ import { BUTTON_TYPE, Button, Modal, Pill, TextInput } from '@app/components';
 import { useMutation, useQuery } from 'urql';
 import { MUTATIONS, QUERIES } from '@app/graphql';
 import { Digital } from 'react-activity';
+import { useTranslation } from 'react-i18next';
 
 /**
  * Props Type Interface for {@link NewProduct}
@@ -23,6 +24,7 @@ const NewProduct = ({ show, close }: NewProductProps): JSX.Element => {
   const [{ data, error, fetching }] = useQuery({
     query: QUERIES.GET_CATEGORIES,
   });
+  const { t } = useTranslation();
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [name, setName] = useState<string>('');
   const [description, setDescription] = useState<string>('');
@@ -68,31 +70,35 @@ const NewProduct = ({ show, close }: NewProductProps): JSX.Element => {
   return (
     <Modal show={show}>
       <form className={s.wrapper} onSubmit={handleSubmit}>
-        <h2 className={s.title}>New Products</h2>
-        <TextInput label="Name" value={name} onChange={text => setName(text)} />
+        <h2 className={s.title}>{t(`newProduct`)}</h2>
         <TextInput
-          label="Description"
+          label={t('name')}
+          value={name}
+          onChange={text => setName(text)}
+        />
+        <TextInput
+          label={t('description')}
           value={description}
           onChange={text => setDescription(text)}
         />
         <TextInput
-          label="Price"
+          label={t('price')}
           value={price === 0 ? '' : String(price.toFixed(2))}
           onChange={text => setPrice(Number.parseFloat(text))}
         />
         <TextInput
-          label="Image"
+          label={t('image')}
           value={imageSrc}
           onChange={text => setImageSrc(text)}
         />
         {imageSrc && (
           <div className={s.imagePreview}>
-            <p>Image preview:</p>
+            <p>{t('imagePreview')}:</p>
             <img className={s.image} src={imageSrc} alt={name} />
           </div>
         )}
         <div className={s.categoryList}>
-          <h3 className={s.categoryTitle}>Categories: </h3>
+          <h3 className={s.categoryTitle}>{t('categories')}: </h3>
           {data?.categories.map(({ id, friendly_name }) => (
             <Pill
               key={id}

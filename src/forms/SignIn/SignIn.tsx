@@ -26,6 +26,7 @@ const SignIn = (): JSX.Element => {
   return (
     <form className={s.wrapper} onSubmit={submitHandler}>
       {formError && <p>{formError}</p>}
+      <h1>{t('signIn')}</h1>
       <TextInput
         placeholder={t('usernamePlaceholder')}
         value={username}

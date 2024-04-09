@@ -20,7 +20,7 @@ const Header = (): JSX.Element => {
       <Link to={ROUTES.HOME}>{t('home')}</Link>
 
       <Link to={ROUTES.BASKET}>
-        {t('Basket')} (£{totalPrice.toFixed(2)})
+        {t('basket')} (£{totalPrice.toFixed(2)})
       </Link>
     </header>
   );
