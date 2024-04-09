@@ -162,16 +162,16 @@ These permissions can be applied to multiple scenarios. For example, I've set up
     {
       "users": {
         "user_id": {
-          "_eq":"X-Hasura-User-Id"
-          }
+          "_eq": "X-Hasura-User-Id"
         }
+      }
     },
     {
       "user_groups": {
         "user_group": {
           "users": {
             "user_id": {
-              "_eq":"X-Hasura-User-Id"
+              "_eq": "X-Hasura-User-Id"
             }
           }
         }
