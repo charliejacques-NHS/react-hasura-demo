@@ -28,7 +28,7 @@ const NewProduct = ({ show, close }: NewProductProps): JSX.Element => {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [name, setName] = useState<string>('');
   const [description, setDescription] = useState<string>('');
-  const [price, setPrice] = useState<number>(0);
+  const [price, setPrice] = useState<string>('');
   const [imageSrc, setImageSrc] = useState<string>('');
 
   const handleSubmit = async (e: FormEvent) => {
@@ -36,7 +36,7 @@ const NewProduct = ({ show, close }: NewProductProps): JSX.Element => {
 
     const newProduct: MUTATIONS.NEW_PRODUCT_VARIABLES = {
       name,
-      price,
+      price: Number.parseFloat(price),
       description,
       categories: [],
     };
@@ -83,8 +83,8 @@ const NewProduct = ({ show, close }: NewProductProps): JSX.Element => {
         />
         <TextInput
           label={t('price')}
-          value={price === 0 ? '' : String(price.toFixed(2))}
-          onChange={text => setPrice(Number.parseFloat(text))}
+          value={price}
+          onChange={text => setPrice(text)}
         />
         <TextInput
           label={t('image')}
